@@ -172,3 +172,20 @@ deben verificarse en el VPS con los servicios realmente desplegados.
 Fuentes técnicas: [proxy de Nginx](https://nginx.org/en/docs/http/ngx_http_proxy_module.html),
 [distribución oficial](https://nginx.org/en/download.html) y
 [redes de Swarm](https://docs.docker.com/engine/swarm/networking/).
+# Corrección TLS del proxy (2026-11-10)
+
+Se compararon los `.env.example` de Administrar y LiquidAR: ambos utilizan
+`SECURITY_API_ORIGIN=https://gateway.zenthia.ar`. No se requiere cambiar ese destino.
+LiquidAR activa la verificación TLS del upstream; Administrar no la activa.
+
+Se reprodujo con Nginx 1.30.6 para Windows y el gateway real, sin credenciales:
+GET `/api/auth/login` con verificación activa y profundidad 1 devuelve 502 con
+`unable to get local issuer certificate`; con profundidad 5 devuelve 405 sin
+errores TLS (el endpoint requiere POST). Se utilizó el mismo almacén de raíces
+públicas de Node en ambas pruebas. Evidencia y script en
+`output/liquidar-web-deploy-review-20261109/check-gateway-tls.cjs` del workspace.
+
+Se establece `proxy_ssl_verify_depth 5` en ambos upstreams sin desactivar la
+verificación de certificados. No cambia el contrato de autenticación ni las
+rutas. Falta confirmar la nueva imagen en el VPS y el login real mediante HTTPS;
+la reproducción local no sustituye esa validación.

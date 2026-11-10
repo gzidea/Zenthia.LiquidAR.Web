@@ -44,7 +44,21 @@ npm.cmd run dev
 
 La aplicación abre en `http://localhost:5175`. Sin el ApplicationId real muestra un aviso y deshabilita el ingreso; no usa un ID por defecto. El nombre visible es **Zenthia.LiquidAR.Web**; el nombre técnico npm es `zenthia-liquidar-web`.
 
-`SECURITY_PROXY_TARGET` apunta por defecto a `http://localhost:5103`, el puerto del perfil local de Security analizado. Confirmar ese valor en el entorno a utilizar. No se incluye ni se levanta Security con este proyecto.
+El proxy `/api` de desarrollo tiene el destino `https://gateway.zenthia.ar` definido en `vite.config.ts`. `SECURITY_PROXY_TARGET` no se lee en la configuración actual y se retiró de `.env.example`. No se incluye ni se levanta Security con este proyecto.
+
+El ejemplo reúne variables de dos modos de ejecución diferentes:
+
+| Variable | Consumidor | Uso |
+| --- | --- | --- |
+| `VITE_SECURITY_APPLICATION_ID` | Frontend compilado con Vite | ID público de la aplicación en Security. |
+| `VITE_SECURITY_BASE_URL` | Navegador, desarrollo local | Base de Security; `/api` utiliza el proxy de Vite. |
+| `VITE_LIQUIDAR_BASE_URL` | Navegador, desarrollo local | Base de negocio de LiquidAR, incluyendo `/api`. |
+| `DEV_HTTPS_CERT`, `DEV_HTTPS_KEY` | Servidor local de Vite | Certificado y clave PEM opcionales; configurar ambos juntos. |
+| `LIQUIDAR_WEB_IMAGE` | Docker Compose / Portainer | Imagen GHCR que se despliega. |
+| `SECURITY_API_ORIGIN` | Nginx del contenedor | Origen de Security, sin `/api` ni barra final. |
+| `LIQUIDAR_API_ORIGIN` | Nginx del contenedor | Origen de negocio de LiquidAR, sin `/api` ni barra final. |
+
+En Docker, el navegador usa `/api` para Security y `/liquidar-api` para LiquidAR. Nginx envía esta última ruta a `${LIQUIDAR_API_ORIGIN}/api/`; por eso el origen no incluye `/api`. El Dockerfile fija ambas bases al compilar: las URLs `VITE_*` del archivo local no cambian esa imagen. Para GitHub se configura aparte la variable de repositorio `SECURITY_APPLICATION_ID` con el ID real; copiar `.env.example` no configura Actions ni Portainer.
 
 Para autenticar con las cookies `Secure` de Security, utilizar HTTPS. Vite admite los paths de un certificado PEM local confiable con `DEV_HTTPS_CERT` y `DEV_HTTPS_KEY`. HTTP queda disponible para inspección visual; no se considera prueba de autenticación integrada. No se degradan las cookies ni se desactiva la validación TLS del proxy.
 
@@ -331,6 +345,13 @@ repositorio; el `.env` local y las variables de Portainer no completan ese valor
 Un 401 antes de iniciar sesión no acredita por sí solo un fallo del proxy. Un 502,
 un error de certificado o una ruta de negocio que devuelve 404 requieren revisar
 el upstream correspondiente, no enviar todas las rutas al gateway de Security.
+
+El proxy valida los certificados HTTPS con `proxy_ssl_verify on` y
+`proxy_ssl_verify_depth 5`. El gateway presenta una cadena con varios certificados
+intermedios; la profundidad predeterminada de 1 puede producir un 502 durante el
+handshake TLS. Si se despliega una imagen anterior a esta corrección, publicar una
+nueva imagen y actualizar el servicio en Portainer; cambiar el `.env` no modifica
+la plantilla incluida en una imagen existente.
 
 ### Docker local y configuración de entorno
 
