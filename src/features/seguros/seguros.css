@@ -1,0 +1,81 @@
+.valores-generales-page {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.valores-generales-page > h1,
+.valores-generales-page > p {
+  margin: 0;
+}
+.seguros-form {
+  border: 0;
+  padding: 12px 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.seguros-form legend {
+  font-weight: 600;
+}
+.seguros-form > label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+.seguros-form p {
+  grid-column: 1 / -1;
+  font-size: 13px;
+}
+.seguros-history {
+  max-height: 250px;
+  overflow: auto;
+  margin-block: 16px;
+}
+.seguros-history table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 650px;
+  font-size: 13px;
+}
+@media (min-width: 601px) {
+  .seguros-form .field,
+  .seguros-form > label {
+    display: grid;
+    grid-template-columns: minmax(110px, 0.8fr) minmax(0, 1.2fr);
+    gap: 8px;
+    align-items: center;
+    margin: 0;
+  }
+  .seguros-form .field label {
+    margin: 0;
+  }
+  .seguros-form .field input,
+  .seguros-form select {
+    min-height: 32px;
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+}
+.seguros-history th,
+.seguros-history td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.seguros-history th {
+  white-space: nowrap;
+  border-top: 1px solid var(--rule);
+  background: var(--card);
+}
+.seguros-history .button {
+  white-space: nowrap;
+  min-width: 68px;
+}
+@media (max-width: 600px) {
+  .seguros-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

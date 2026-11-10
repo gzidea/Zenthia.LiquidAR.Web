@@ -1,0 +1,75 @@
+.formula-config-page {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.formula-config-page > h1,
+.formula-config-page > p {
+  margin: 0;
+}
+.formula-config-content {
+  min-width: 0;
+}
+.formula-config-tabs,
+.formula-config-periodos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.formula-config-tabs {
+  flex-direction: row;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border, #cbd5e1);
+}
+.formula-config-tabs > button {
+  width: auto;
+  flex: 0 0 auto;
+}
+.formula-config-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  display: grid;
+  gap: 10px;
+}
+.formula-config-form .field {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  align-items: start;
+  gap: 8px;
+}
+.formula-config-form .formula-config-options {
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 8px;
+  border: 1px solid var(--border, #cbd5e1);
+}
+.formula-config-options label,
+.formula-config-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.formula-config-source {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.formula-config-source select {
+  min-width: 220px;
+  max-width: 100%;
+}
+@media (max-width: 640px) {
+  .formula-config-form .field {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .formula-config-source {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

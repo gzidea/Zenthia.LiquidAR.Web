@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  liquidar-web:
+    image: '${LIQUIDAR_WEB_IMAGE:?Definir LIQUIDAR_WEB_IMAGE con la imagen GHCR de LiquidAR Web}'
+    ports:
+      - '8090:80'
+    environment:
+      SECURITY_API_ORIGIN: '${SECURITY_API_ORIGIN:-https://gateway.zenthia.ar}'
+      LIQUIDAR_API_ORIGIN: '${LIQUIDAR_API_ORIGIN:-https://liquidar-api.zenthia.ar}'
+    networks:
+      - external_zenthia
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+
+networks:
+  external_zenthia:
+    external: true

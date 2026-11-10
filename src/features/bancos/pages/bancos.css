@@ -1,0 +1,78 @@
+.bancos-page {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.bancos-heading h1 {
+  margin: 0;
+}
+.banco-form {
+  --banco-control-height: 28px;
+  margin-top: var(--space-5);
+}
+.modal-dialog:has(.banco-form) {
+  --modal-width: 755px;
+}
+.banco-fields {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: var(--space-2) var(--space-5);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.banco-entry {
+  min-width: 0;
+}
+.banco-entry .field {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-1);
+}
+.banco-entry .field label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+}
+.banco-entry .field input {
+  width: 100%;
+  min-width: 0;
+  height: var(--banco-control-height);
+  min-height: var(--banco-control-height);
+  padding: 3px 6px;
+  font-size: 13px;
+}
+.banco-entry .field-error {
+  grid-column: 2;
+}
+.banco-entry-abreviacion {
+  grid-column: 1 / -1;
+  max-width: 340px;
+}
+.bcra-result {
+  display: grid;
+  gap: var(--space-3);
+}
+.bcra-result ul {
+  padding-left: var(--space-5);
+}
+@media (max-width: 600px) {
+  .banco-form {
+    --banco-control-height: 36px;
+  }
+  .banco-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-2);
+  }
+  .banco-entry .field {
+    grid-template-columns: 105px minmax(0, 1fr);
+  }
+  .banco-entry .field input {
+    font-size: 16px;
+  }
+  .banco-entry-abreviacion {
+    max-width: none;
+  }
+}

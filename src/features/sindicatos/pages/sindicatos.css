@@ -1,0 +1,177 @@
+.sindicatos-page {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.sindicato-detail {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.sindicato-detail dt {
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.sindicato-detail dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.sindicatos-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.sindicatos-heading h1 {
+  margin: 0;
+}
+.sindicatos-heading .button {
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+/* LayoutControl1: six compact general rows and the lower GroupControl1. */
+.sindicato-form {
+  --sindicato-control-height: 28px;
+  margin-top: var(--space-5);
+}
+.modal-dialog:has(.sindicato-form) {
+  --modal-width: 755px;
+}
+.sindicato-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.sindicato-general {
+  display: grid;
+  gap: var(--space-1);
+}
+.sindicato-entry {
+  min-width: 0;
+}
+.sindicato-entry .field {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--space-1);
+}
+.sindicato-entry .field label {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+}
+.sindicato-entry .field input,
+.sindicato-entry .field select {
+  width: 100%;
+  min-width: 0;
+  min-height: 28px;
+  height: 28px;
+  padding: 3px 6px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.sindicato-entry .field-error {
+  grid-column: 2;
+  margin-top: var(--space-1);
+}
+.sindicato-entry-codigo {
+  width: 150px;
+}
+.sindicato-entry-idProvincia {
+  width: 42%;
+}
+.sindicato-location-row {
+  display: grid;
+  grid-template-columns: minmax(0, 463fr) minmax(0, 193fr);
+  gap: 29px;
+}
+.sindicato-contact-row {
+  display: grid;
+  grid-template-columns: minmax(0, 420fr) minmax(0, 242fr);
+  gap: 23px;
+}
+.sindicato-entry-codigoPostal .field,
+.sindicato-entry-telefono .field {
+  grid-template-columns: 88px minmax(0, 1fr);
+}
+.sindicato-contributions {
+  margin: var(--space-1) 0 0;
+  padding: 30px 10% 48px 6%;
+  min-width: 0;
+  border: 1px solid var(--rule);
+  background: var(--white);
+  position: relative;
+}
+.sindicato-contributions::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 20px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--card);
+}
+.sindicato-contributions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 10%;
+}
+.sindicato-contributions .field {
+  grid-template-columns: minmax(0, 1fr) 100px;
+}
+.sindicato-contributions .field label {
+  text-align: right;
+}
+.sindicato-entry-baseDeCalculo {
+  grid-column: 1 / -1;
+}
+.sindicato-entry-baseDeCalculo .field {
+  grid-template-columns: calc((100% - 10%) / 2 - 104px) minmax(0, 1fr);
+}
+@media (max-width: 600px) {
+  .sindicato-form {
+    --sindicato-control-height: 36px;
+  }
+  .sindicato-entry-codigo {
+    width: 170px;
+  }
+  .sindicato-entry-idProvincia {
+    width: 100%;
+  }
+  .sindicato-location-row,
+  .sindicato-contact-row,
+  .sindicato-contributions-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-2);
+  }
+  .sindicato-general {
+    gap: var(--space-2);
+  }
+  .sindicato-entry .field,
+  .sindicato-entry-baseDeCalculo .field {
+    grid-template-columns: 105px minmax(0, 1fr);
+  }
+  .sindicato-contributions {
+    padding: 28px var(--space-2) var(--space-3);
+  }
+  .sindicato-contributions .field {
+    grid-template-columns: 145px minmax(0, 1fr);
+  }
+  .sindicato-contributions .field label {
+    text-align: left;
+  }
+  .sindicato-entry .field input,
+  .sindicato-entry .field select {
+    height: 36px;
+    font-size: 16px;
+  }
+}

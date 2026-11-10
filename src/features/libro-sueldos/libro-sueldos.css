@@ -1,0 +1,116 @@
+.lsd-page,
+.lsd-config {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.lsd-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.lsd-heading h1 {
+  margin: 0;
+}
+.lsd-filters {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.lsd-filters > .field {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.lsd-filters > .button {
+  width: auto;
+}
+.lsd-form {
+  margin-top: var(--space-5);
+}
+.lsd-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-5);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.lsd-entry {
+  min-width: 0;
+}
+.lsd-entry .field {
+  display: grid;
+  grid-template-columns: 145px minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--space-1);
+}
+.lsd-entry .field label {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+}
+.lsd-entry .field input:not([type='checkbox']),
+.lsd-entry .field select {
+  width: 100%;
+  min-width: 0;
+  min-height: 28px;
+  height: 28px;
+  padding: 3px 6px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.lsd-entry .field input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--ink);
+}
+.lsd-entry .field-error,
+.lsd-entry .field-note {
+  grid-column: 2;
+}
+.lsd-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 var(--space-3);
+}
+.lsd-tabs .button {
+  width: auto;
+}
+.lsd-tabs [aria-pressed='true'] {
+  border-color: var(--ink);
+}
+.lsd-state {
+  font-size: 13px;
+  color: var(--muted);
+}
+.modal-dialog:has(.lsd-form) {
+  --modal-width: 1040px;
+}
+.modal-dialog:has(.lsd-config) {
+  --modal-width: 1120px;
+}
+@media (max-width: 800px) {
+  .lsd-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .lsd-entry .field {
+    grid-template-columns: 125px minmax(0, 1fr);
+  }
+  .lsd-filters {
+    align-items: stretch;
+  }
+  .lsd-filters > .field {
+    flex-basis: 100%;
+  }
+}

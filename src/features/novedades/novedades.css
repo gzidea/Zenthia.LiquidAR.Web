@@ -1,0 +1,270 @@
+.novedades-work {
+  min-width: 0;
+}
+.novedades-work h1 {
+  margin-bottom: 0.25rem;
+}
+.novedades-work h2 {
+  font-size: 1.15rem;
+}
+.novedades-context,
+.novedades-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin: 16px 0;
+}
+.novedades-context label,
+.novedades-tools label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.novedades-work input:not([type='checkbox']),
+.novedades-work select,
+.novedades-editor input {
+  min-width: 0;
+  height: 28px;
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: inherit;
+  border-radius: 2px;
+  padding: 3px 8px;
+  font: inherit;
+}
+.novedades-work select {
+  max-width: 320px;
+}
+.novedades-work .data-grid-search input {
+  padding-left: 36px;
+}
+.novedades-work input:disabled,
+.novedades-work select:disabled {
+  opacity: 0.7;
+}
+.novedades-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.novedades-empresas {
+  border: 1px solid var(--rule);
+  padding: 12px;
+}
+.novedades-empresa {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  gap: 6px;
+  padding: 12px 6px;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.novedades-empresa[aria-pressed='true'] {
+  border-left: 3px solid var(--stamp);
+  background: var(--card);
+}
+.novedades-empresa span,
+.novedades-help {
+  font-size: 0.8rem;
+}
+.novedades-main {
+  min-width: 0;
+}
+.novedades-main td input {
+  width: 100%;
+  max-width: 140px;
+}
+.novedades-table-wrap {
+  overflow: auto;
+}
+.novedades-result details {
+  border: 1px solid var(--rule);
+  padding: 12px;
+  margin-top: 12px;
+}
+.novedades-result summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.novedades-result dl {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.novedades-result dd {
+  margin: 0;
+}
+.novedades-result table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.novedades-result th,
+.novedades-result td {
+  text-align: left;
+  padding: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.novedades-editor fieldset {
+  border: 1px solid var(--rule);
+  margin: 16px 0;
+  padding: 12px;
+}
+.novedades-editor label {
+  display: grid;
+  grid-template-columns: 145px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+.novedades-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 0;
+}
+.novedades-detail strong {
+  width: 100%;
+}
+.novedades-detail label {
+  grid-template-columns: auto minmax(80px, 140px);
+}
+.novedades-work textarea {
+  width: 100%;
+}
+@media (max-width: 1100px) {
+  .novedades-layout {
+    grid-template-columns: 1fr;
+  }
+  .novedades-empresas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .novedades-empresas h2,
+  .novedades-empresas .selection-search {
+    width: 100%;
+  }
+  .novedades-empresa {
+    width: auto;
+    min-width: 180px;
+    flex: 1;
+  }
+}
+@media (max-width: 600px) {
+  .novedades-context label,
+  .novedades-tools label {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .novedades-work select {
+    max-width: 65%;
+  }
+  .novedades-work input:not([type='checkbox']),
+  .novedades-work select,
+  .novedades-editor input {
+    height: 36px;
+  }
+  .novedades-empresa {
+    min-width: 100%;
+  }
+  .novedades-editor label {
+    grid-template-columns: 110px minmax(0, 1fr);
+  }
+  .novedades-detail label {
+    width: 100%;
+  }
+  .novedades-tools button {
+    flex: 1;
+  }
+}
+
+.novedades-empresas .selection-search {
+  flex-wrap: wrap;
+}
+.novedades-empresas .selection-search .field {
+  flex: 1 1 100%;
+}
+.novedades-empresas .selection-search label {
+  white-space: nowrap;
+}
+.novedades-empresas .selection-search input {
+  width: 100%;
+}
+
+/* Override the global full-width button and fieldset spacing, as in Empresa. */
+.novedades-tools > .button,
+.novedades-result .button,
+.novedades-context > .button {
+  width: auto;
+  min-height: 32px;
+  padding: 6px 10px;
+  flex: 0 1 auto;
+}
+.novedades-editor fieldset {
+  display: block;
+}
+.novedades-editor label {
+  font-size: 13px;
+}
+.novedades-detail {
+  border: 1px solid var(--rule);
+  padding: 10px;
+  gap: 12px;
+  margin-top: 8px;
+}
+.novedades-detail-data {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  flex: 1 1 400px;
+  min-width: 0;
+}
+.novedades-detail-data strong {
+  font-size: 13px;
+}
+.novedades-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-left: auto;
+  justify-content: flex-end;
+  flex: 0 1 auto;
+}
+.novedades-detail-actions .button {
+  width: auto;
+  min-height: 28px;
+  padding: 4px 8px;
+  font-size: 13px;
+}
+.novedades-detail label {
+  grid-template-columns: auto minmax(70px, 125px);
+}
+.novedades-detail label:nth-of-type(2) {
+  grid-template-columns: auto minmax(120px, 180px);
+}
+@media (max-width: 600px) {
+  .novedades-tools > .button {
+    min-height: 36px;
+  }
+  .novedades-detail-data {
+    flex-basis: 100%;
+  }
+  .novedades-detail label,
+  .novedades-detail label:nth-of-type(2) {
+    grid-template-columns: 105px minmax(0, 1fr);
+    width: 100%;
+  }
+  .novedades-detail-actions {
+    width: 100%;
+  }
+}

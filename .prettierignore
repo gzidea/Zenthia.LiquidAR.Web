@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+package-lock.json
+AGENTS.md
+Zenthia.LiquidAR/
+Zenthia.Security.Api/
+.certs/
+artifacts/

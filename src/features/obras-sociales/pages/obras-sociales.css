@@ -1,0 +1,164 @@
+.obras-sociales-page {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.obras-sociales-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.obras-sociales-heading h1 {
+  margin: 0;
+}
+.obras-sociales-heading .button {
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+/* LayoutControl1: six compact general rows and the lower GroupControl1. */
+.obra-social-form {
+  --obra-social-control-height: 28px;
+  margin-top: var(--space-5);
+}
+.modal-dialog:has(.obra-social-form) {
+  --modal-width: 755px;
+}
+.obra-social-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.obra-social-general {
+  display: grid;
+  gap: var(--space-1);
+}
+.obra-social-entry {
+  min-width: 0;
+}
+.obra-social-entry .field {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--space-1);
+}
+.obra-social-entry .field label {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+}
+.obra-social-entry .field input,
+.obra-social-entry .field select {
+  width: 100%;
+  min-width: 0;
+  min-height: 28px;
+  height: 28px;
+  padding: 3px 6px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.obra-social-entry .field-error {
+  grid-column: 2;
+  margin-top: var(--space-1);
+}
+.obra-social-entry-codigo {
+  width: 150px;
+}
+.obra-social-entry-idProvincia {
+  width: 42%;
+}
+.obra-social-contact-row {
+  display: grid;
+  grid-template-columns: minmax(0, 420fr) minmax(0, 242fr);
+  gap: 23px;
+}
+.obra-social-contributions {
+  margin: var(--space-1) 0 0;
+  padding: 30px 10% 48px 6%;
+  min-width: 0;
+  border: 1px solid var(--rule);
+  background: var(--white);
+  position: relative;
+}
+.obra-social-contributions::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 20px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--card);
+}
+.obra-social-contributions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 10%;
+}
+.obra-social-contributions .field {
+  grid-template-columns: minmax(0, 1fr) 100px;
+}
+.obra-social-contributions .field label {
+  text-align: right;
+}
+.obra-social-entry-baseDeCalculo {
+  grid-column: 1 / -1;
+}
+.obra-social-entry-baseDeCalculo .field {
+  grid-template-columns: calc((100% - 10%) / 2 - 104px) minmax(0, 1fr);
+}
+@media (max-width: 600px) {
+  .obra-social-form {
+    --obra-social-control-height: 36px;
+  }
+  .obra-social-entry-codigo {
+    width: 170px;
+  }
+  .obra-social-entry-idProvincia {
+    width: 100%;
+  }
+  .obra-social-contact-row,
+  .obra-social-contributions-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-2);
+  }
+  .obra-social-general {
+    gap: var(--space-2);
+  }
+  .obra-social-entry .field,
+  .obra-social-entry-baseDeCalculo .field {
+    grid-template-columns: 105px minmax(0, 1fr);
+  }
+  .obra-social-contributions {
+    padding: 28px var(--space-2) var(--space-3);
+  }
+  .obra-social-contributions .field {
+    grid-template-columns: 145px minmax(0, 1fr);
+  }
+  .obra-social-contributions .field label {
+    text-align: left;
+  }
+  .obra-social-entry .field input,
+  .obra-social-entry .field select {
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+.obra-social-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.obra-social-page-feedback {
+  margin-block: var(--space-2);
+}

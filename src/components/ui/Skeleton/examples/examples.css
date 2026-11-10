@@ -1,0 +1,24 @@
+.skeleton-examples {
+  max-width: 1100px;
+  margin: auto;
+  padding: var(--space-5);
+}
+.skeleton-examples section {
+  margin-block: var(--space-5);
+  min-width: 0;
+}
+.skeleton-examples h2 {
+  margin-bottom: var(--space-4);
+}
+.skeleton-example-blocks {
+  display: grid;
+  gap: var(--space-4);
+}
+.skeleton-example-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.skeleton-example-buttons .button {
+  width: auto;
+}

@@ -1,0 +1,139 @@
+.convenios-page {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.convenios-page > h1 {
+  margin: 0;
+}
+.convenio-form {
+  --convenio-control-height: 28px;
+  margin-top: var(--space-5);
+  min-width: 0;
+}
+.convenio-fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0;
+}
+.convenio-root {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: var(--space-1) var(--space-3);
+}
+.convenio-entry-descripcion {
+  grid-column: 1 / -1;
+}
+.convenio-form .field {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 0;
+  margin: 0;
+}
+.convenio-form .field label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+}
+.convenio-form .field input,
+.convenio-form .field select {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--convenio-control-height);
+  height: var(--convenio-control-height);
+  padding: 3px 6px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.convenio-form .field input:focus,
+.convenio-form .field select:focus {
+  background: var(--white);
+  border-color: var(--stamp);
+}
+.convenio-form .field-error {
+  grid-column: 2;
+  margin: 0;
+}
+.convenio-form .field [aria-invalid='true'] {
+  border-color: var(--stamp);
+}
+.convenio-categorias {
+  margin-top: var(--space-4);
+}
+.convenio-fields {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.convenio-fields .field {
+  grid-template-columns: 160px minmax(0, 1fr);
+}
+.convenio-fields fieldset {
+  margin: var(--space-2) 0;
+  padding: var(--space-2);
+  border: 1px solid var(--rule);
+}
+.convenio-check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+}
+.convenio-check input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+.convenio-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+.convenio-toolbar .button {
+  margin-left: auto;
+}
+.convenio-preview {
+  overflow-x: auto;
+  margin-top: var(--space-3);
+}
+.convenio-preview table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.convenio-preview th,
+.convenio-preview td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  white-space: nowrap;
+}
+.convenio-preview caption {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+@media (max-width: 600px) {
+  .convenio-form {
+    --convenio-control-height: 36px;
+  }
+  .convenio-root {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .convenio-form .field {
+    grid-template-columns: 110px minmax(0, 1fr);
+  }
+  .convenio-form .field input,
+  .convenio-form .field select {
+    font-size: 16px;
+  }
+}

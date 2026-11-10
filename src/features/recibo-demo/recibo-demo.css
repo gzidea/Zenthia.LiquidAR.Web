@@ -1,0 +1,144 @@
+.recibo-demo {
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+}
+.demo-header {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+  padding: 16px 32px;
+}
+.demo-header > span {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+}
+.demo-header > a {
+  margin-left: auto;
+  font-size: 14px;
+}
+.recibo-demo main {
+  max-width: 1480px;
+  margin: auto;
+  padding: 28px 32px 48px;
+}
+.recibo-demo h1 {
+  font-size: 30px;
+  margin: 0 0 8px;
+}
+.demo-intro {
+  max-width: 850px;
+  margin: 0 0 24px;
+  color: var(--ink-soft);
+}
+.demo-workspace {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.demo-editor {
+  margin: 0;
+  background: var(--card);
+  padding: 20px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.demo-editor h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+.demo-editor .field {
+  margin-bottom: 16px;
+}
+.demo-editor .field select {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 10px 12px;
+  border-radius: var(--radius);
+}
+.demo-editor .field input {
+  min-width: 0;
+}
+.demo-context {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.demo-preview {
+  min-width: 0;
+}
+.demo-preview-status {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.demo-preview-status:empty {
+  margin-bottom: 0;
+}
+.demo-empty {
+  background: #fff;
+  color: #172333;
+  padding: 22px;
+  box-shadow: 0 6px 20px #1c262015;
+}
+.demo-empty {
+  min-height: 250px;
+  border: 1px solid var(--rule);
+}
+.demo-placeholder-heading {
+  height: 24px;
+  width: 55%;
+  background: #eef1f6;
+  margin-bottom: 24px;
+}
+.demo-placeholder-fields {
+  height: 90px;
+  background: #eef1f6;
+}
+@media (max-width: 1050px) {
+  .demo-workspace {
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+@media (max-width: 760px) {
+  .demo-workspace {
+    grid-template-columns: 1fr;
+  }
+  .recibo-demo main {
+    padding: 20px 12px;
+  }
+  .demo-header {
+    padding: 12px;
+    gap: 12px;
+  }
+  .demo-header > a {
+    margin-left: 0;
+  }
+
+  .demo-editor input,
+  .demo-editor select {
+    font-size: 16px;
+  }
+}
+@media print {
+  .demo-header,
+  .demo-editor,
+  .demo-intro,
+  .recibo-demo h1,
+  .demo-preview-status {
+    display: none;
+  }
+  .demo-workspace {
+    display: block;
+  }
+  .recibo-demo main {
+    padding: 0;
+  }
+}

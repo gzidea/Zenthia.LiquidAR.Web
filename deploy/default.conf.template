@@ -1,0 +1,49 @@
+server {
+    listen 80;
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+    server_tokens off;
+
+    # Preserve the API's own upload limits rather than imposing Nginx's 1 MB default.
+    client_max_body_size 0;
+
+    location = /health { return 204; }
+
+    location /api/ {
+        proxy_pass ${SECURITY_API_ORIGIN};
+        proxy_ssl_server_name on;
+        proxy_ssl_verify on;
+        proxy_ssl_trusted_certificate /etc/ssl/certs/ca-certificates.crt;
+        proxy_set_header Host $proxy_host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Authorization "";
+        proxy_pass_header Date;
+    }
+
+    location /liquidar-api/ {
+        # Frontend-only prefix; the backend still receives its existing /api routes.
+        proxy_pass ${LIQUIDAR_API_ORIGIN}/api/;
+        proxy_ssl_server_name on;
+        proxy_ssl_verify on;
+        proxy_ssl_trusted_certificate /etc/ssl/certs/ca-certificates.crt;
+        proxy_set_header Host $proxy_host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Authorization $http_authorization;
+        proxy_set_header Cookie "";
+        proxy_hide_header Set-Cookie;
+        proxy_pass_header Date;
+        proxy_read_timeout 120s;
+    }
+
+    location /assets/ {
+        try_files $uri =404;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+    }
+    location / {
+        try_files $uri $uri/ /index.html;
+        add_header Cache-Control "no-cache";
+    }
+}

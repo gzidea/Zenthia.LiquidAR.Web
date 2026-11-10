@@ -1,0 +1,315 @@
+.legajos-page {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.legajos-page > h1 {
+  margin: 0;
+}
+.legajo-form {
+  --legajo-control-height: 28px;
+  margin-top: var(--space-5);
+  min-width: 0;
+}
+.legajo-fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.legajo-root {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-1) var(--space-3);
+}
+.legajo-entry {
+  grid-column: span 4;
+  min-width: 0;
+}
+.legajo-entry-codigo {
+  grid-column: span 3;
+}
+.legajo-entry-codigo input {
+  max-width: 90px;
+}
+.legajo-entry-nombre {
+  grid-column: span 9;
+}
+.legajo-entry-direccion {
+  grid-column: 1 / -1;
+}
+.legajo-entry-localidad,
+.legajo-entry-email {
+  grid-column: span 8;
+}
+.legajo-form .field {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--space-1);
+  margin: 0;
+  min-width: 0;
+}
+.legajo-entry-idTipoEmpresaAfip .field {
+  grid-template-columns: 130px minmax(0, 1fr);
+}
+.legajo-form .field label {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+}
+.legajo-form .field input,
+.legajo-form .field select {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--legajo-control-height);
+  height: var(--legajo-control-height);
+  padding: 3px 6px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.legajo-form .field input:focus,
+.legajo-form .field select:focus {
+  background: var(--white);
+  border-color: var(--stamp);
+}
+.legajo-form .field [aria-invalid='true'] {
+  border-color: var(--stamp);
+}
+.legajo-form .field-error {
+  grid-column: 2;
+  margin-top: var(--space-1);
+}
+.legajo-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  border-bottom: 1px solid var(--rule);
+  overflow-x: auto;
+}
+.legajo-tabs [role='tab'] {
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  padding: 9px var(--space-3);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.legajo-tabs [aria-selected='true'] {
+  border-bottom-color: var(--stamp);
+  font-weight: 600;
+}
+.legajo-tab-content {
+  min-height: 140px;
+  padding-top: var(--space-2);
+}
+.legajo-tab-content[hidden] {
+  display: none;
+}
+.legajo-tab-content .button {
+  width: auto;
+  min-height: 28px;
+  padding: 5px 8px;
+  font-size: 13px;
+}
+.legajo-detail-card {
+  margin: var(--space-2) 0;
+  padding: var(--space-2);
+  border: 1px solid var(--rule);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.legajo-detail-data {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.legajo-detail-name {
+  flex: 0 1 280px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+.legajo-detail-data .field {
+  flex: 0 1 280px;
+  grid-template-columns: 100px minmax(0, 1fr);
+}
+.legajo-detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+.legajo-check {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+  font-size: 13px;
+}
+.legajo-check input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+.legajo-contacto {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.legajo-contacto legend {
+  font-size: 13px;
+}
+.legajo-contacto .field {
+  grid-template-columns: 130px minmax(0, 1fr);
+}
+.legajo-contacto .legajo-detail-actions {
+  grid-column: 1 / -1;
+}
+@media (max-width: 800px) {
+  .legajo-root {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
+  .legajo-entry {
+    grid-column: 1 / -1;
+  }
+  .legajo-detail-data {
+    flex-wrap: wrap;
+  }
+  .legajo-detail-name {
+    flex-basis: 100%;
+  }
+  .legajo-detail-data .field {
+    flex: 1 1 200px;
+  }
+}
+@media (max-width: 600px) {
+  .legajo-form {
+    --legajo-control-height: 36px;
+  }
+  .legajo-form .field {
+    grid-template-columns: 105px minmax(0, 1fr);
+  }
+  .legajo-form .field input,
+  .legajo-form .field select {
+    font-size: 16px;
+  }
+  .legajo-detail-card {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .legajo-detail-data {
+    flex-basis: 100%;
+  }
+  .legajo-detail-data .field {
+    grid-template-columns: 100px minmax(0, 1fr);
+  }
+  .legajo-contacto {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .legajo-contacto .field {
+    grid-template-columns: 105px minmax(0, 1fr);
+  }
+}
+.legajo-entry-codigo .skeleton-stack {
+  max-width: 90px;
+  width: 100%;
+}
+.legajo-tab-content > .button {
+  display: flex;
+  margin-left: auto;
+}
+
+.legajo-groups {
+  display: grid;
+  gap: var(--space-3);
+}
+.legajo-group {
+  border: 1px solid var(--rule);
+  padding: var(--space-3);
+  margin: 0;
+  min-width: 0;
+}
+.legajo-group legend {
+  font-size: 13px;
+  font-weight: 600;
+}
+.legajo-group-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-1) var(--space-3);
+}
+.legajo-form .field {
+  grid-template-columns: 145px minmax(0, 1fr);
+}
+.legajo-form .field input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  min-height: 16px;
+}
+.legajo-detail-summary {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.legajo-filters {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.legajo-filters .field {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+.legajo-filters input,
+.legajo-filters select {
+  min-height: 28px;
+  font: inherit;
+  font-size: 13px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  padding: 3px 6px;
+}
+.legajo-form .skeleton {
+  height: var(--legajo-control-height);
+}
+@media (max-width: 800px) {
+  .legajo-group-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .legajo-form .field {
+    grid-template-columns: 125px minmax(0, 1fr);
+  }
+  .legajo-filters .field {
+    width: 100%;
+  }
+  .legajo-filters input,
+  .legajo-filters select {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.legajo-tabs-skeleton span {
+  font-size: 13px;
+  padding: 9px var(--space-3);
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+}

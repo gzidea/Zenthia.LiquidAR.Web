@@ -1,0 +1,84 @@
+.modal-dialog.session-expired-dialog {
+  --modal-width-small: 508px;
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  color: #3b3b3b;
+  box-shadow: 0 16px 48px rgb(0 0 0 / 18%);
+}
+.session-expired-dialog .modal-body {
+  padding: 26px 24px 32px;
+}
+.session-expired-content {
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.session-expired-clock {
+  width: 80px;
+  height: 80px;
+}
+.session-expired-content h2 {
+  margin: 0;
+  font:
+    700 24px/1.3 'IBM Plex Sans',
+    sans-serif;
+}
+.session-expired-countdown {
+  margin: 0;
+  color: #555;
+  font-size: 16px;
+}
+.session-expired-countdown strong {
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+.session-expired-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+}
+.session-expired-actions .button {
+  min-height: 48px;
+  padding-inline: 24px;
+  border: 2px solid #c44708;
+  border-radius: 18px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.session-expired-actions .session-expired-extend {
+  background: #c44708;
+  color: #fff;
+}
+.session-expired-actions .session-expired-extend:hover:not(:disabled) {
+  background: #a93b05;
+  border-color: #a93b05;
+}
+.session-expired-actions .session-expired-close {
+  color: #b64106;
+  background: #fff;
+}
+.session-expired-actions .session-expired-close:hover {
+  background: #fff3eb;
+}
+.session-expired-error {
+  color: var(--stamp-dark);
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .session-expired-dialog .modal-body {
+    padding: 24px 18px;
+  }
+  .session-expired-content h2 {
+    font-size: 22px;
+  }
+  .session-expired-actions {
+    flex-direction: column;
+  }
+  .session-expired-actions .button {
+    width: 100%;
+  }
+}

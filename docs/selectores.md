@@ -1,0 +1,17 @@
+# Desplegables con búsqueda
+
+`src/components/ui/Select.tsx` es el componente compartido para los desplegables de formularios, filtros, paginación y ejemplos. La búsqueda está activa por defecto. Para ocultarla en un uso concreto, pasar `searchable={false}`; el menú conserva la selección por teclado.
+
+El componente acepta las propiedades y los hijos del select HTML, incluidos `value`, `defaultValue`, `disabled`, `required`, `onChange` y el registro de React Hook Form. Conserva el select real como control de formulario: los IDs enviados, las validaciones, las referencias fuera de catálogo y el restablecimiento de valores siguen el contrato existente. No admite selección múltiple; los selectores con tabla y selección múltiple existentes siguen usando DataGrid y SelectionSearch.
+
+En Fórmulas, Convenio, Concepto y Unidad vinculan explícitamente `value` al estado de React Hook Form. Durante la carga se conserva una opción provisional con el ID y la descripción guardados. Cuando llega el catálogo, reemplazar esa opción no debe cambiar la selección ni el borrador. Un select sin valor controlado podía mostrar Sin selección tras ese reemplazo y, al perder el foco, trasladar el vacío al formulario. La regresión se cubre con catálogos demorados, caché, referencias ausentes, errores, permisos, reapertura, Deshacer y comprobación de los IDs enviados al guardar.
+
+Al abrir se enfoca Buscar. La búsqueda filtra las opciones recibidas sin distinguir mayúsculas ni tildes; compara el texto y `data-search` de cada option (o su valor cuando no se especifica). También incluye `data-secondary` cuando existe. Escribir no modifica la selección. Se puede limpiar la búsqueda; sin resultados se muestra Sin coincidencias. Flechas y Enter seleccionan; Escape cierra el menú y devuelve el foco sin cerrar el diálogo contenedor. Tab continúa con el formulario. Al reabrir, la búsqueda se restablece.
+
+Cada feature mantiene la responsabilidad de obtener el catálogo completo y respetar permisos, carga, errores y dependencias. El componente no consulta APIs ni cambia el filtrado remoto de los listados. Los catálogos paginados de Fórmulas ya recuperan todas las páginas antes de habilitar el campo. No usar el componente para ofrecer una búsqueda global sobre una página parcial de datos remotos.
+
+Para menús con dos columnas, pasar `columns={['Descripción', 'Columna del recibo']}` y `data-secondary` en cada option. Conceptos de Fórmulas utiliza `columnaRecibo` del contrato existente y la misma traducción visible que el campo Columna del recibo. Los códigos se incluyen como texto de búsqueda sin agregarlos como tercera columna. El valor guardado sigue siendo el ID del concepto.
+
+El menú utiliza Popover para mostrarse sobre los diálogos nativos y calcula su ubicación y ancho dentro de la ventana. Se monta en el diálogo contenedor (o en el body fuera de diálogos) para conservar las etiquetas de controles envueltos en un label. Conserva los tokens visuales del proyecto; el formulario no cambia su distribución. No se agregan dependencias, endpoints, permisos ni persistencia.
+
+Pruebas: `Select.test.tsx` cubre búsqueda, columnas, teclado, búsqueda oculta, bloqueo, formularios registrados, reset, etiquetas y catálogos dependientes. `e2e/formulas.spec.ts` cubre el menú real en escritorio, tablet y móvil, un concepto de la segunda página del catálogo, búsqueda por código, selección y accesibilidad. `e2e/legajos.spec.ts` verifica los desplegables buscables de Empresa y Actividad de empresa.

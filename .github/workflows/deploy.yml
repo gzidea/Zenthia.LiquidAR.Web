@@ -1,0 +1,78 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+
+concurrency:
+  group: liquidar-web-deploy
+  cancel-in-progress: false
+
+jobs:
+  build-and-push:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate build configuration
+        env:
+          SECURITY_APPLICATION_ID: ${{ vars.SECURITY_APPLICATION_ID }}
+        shell: bash
+        run: |
+          if [ -z "$SECURITY_APPLICATION_ID" ]; then
+            echo "Configurar la variable de repositorio SECURITY_APPLICATION_ID con el ID real de LiquidAR."
+            exit 1
+          fi
+
+      - name: Resolve image name
+        id: image
+        shell: bash
+        run: |
+          image_name="$REGISTRY/${GITHUB_REPOSITORY,,}"
+          printf 'name=%s\n' "$image_name" >> "$GITHUB_OUTPUT"
+          printf 'Imagen: %s:latest\n' "$image_name"
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          pull: true
+          push: true
+          build-args: |
+            SECURITY_APPLICATION_ID=${{ vars.SECURITY_APPLICATION_ID }}
+          tags: |
+            ${{ steps.image.outputs.name }}:latest
+            ${{ steps.image.outputs.name }}:${{ github.sha }}
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
+      - name: Trigger Portainer redeploy
+        env:
+          WEBHOOK_URL: ${{ secrets.PORTAINER_WEBHOOK_URL }}
+        shell: bash
+        run: |
+          if [ -z "$WEBHOOK_URL" ]; then
+            echo "PORTAINER_WEBHOOK_URL no configurado: imagen publicada, sin redeploy."
+            exit 0
+          fi
+          curl --fail --silent --show-error --output /dev/null \
+            --connect-timeout 10 --max-time 60 \
+            --request POST "$WEBHOOK_URL"

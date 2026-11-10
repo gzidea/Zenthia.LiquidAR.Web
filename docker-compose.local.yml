@@ -1,0 +1,13 @@
+services:
+  liquidar-web:
+    build:
+      context: .
+      args:
+        SECURITY_APPLICATION_ID: '${VITE_SECURITY_APPLICATION_ID:?Definir VITE_SECURITY_APPLICATION_ID con el ID real de LiquidAR}'
+    image: zenthia-liquidar-web:local
+    ports:
+      - '127.0.0.1:8090:80'
+    environment:
+      SECURITY_API_ORIGIN: '${SECURITY_API_ORIGIN:-https://gateway.zenthia.ar}'
+      LIQUIDAR_API_ORIGIN: '${LIQUIDAR_API_ORIGIN:-https://liquidar-api.zenthia.ar}'
+    restart: unless-stopped

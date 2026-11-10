@@ -1,0 +1,9 @@
+.convenios-habilitados-page {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.convenios-habilitados-page > h1,
+.convenios-habilitados-page > p {
+  margin: 0;
+}

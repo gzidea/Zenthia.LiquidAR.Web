@@ -1,0 +1,201 @@
+.reglas-page {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.reglas-page > h1 {
+  margin: 0;
+}
+.regla-form {
+  margin-top: var(--space-5);
+  min-width: 0;
+}
+.regla-fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0;
+}
+.regla-general {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-3);
+}
+.regla-wide {
+  grid-column: 1/-1;
+}
+.regla-form .field {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 0;
+  margin: 0;
+}
+.regla-form .field label {
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0;
+}
+.regla-form input:not([type='checkbox']),
+.regla-form select,
+.regla-form textarea,
+.regla-filters input,
+.regla-filters select {
+  width: 100%;
+  min-width: 0;
+  min-height: 28px;
+  padding: 3px 6px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.regla-form textarea {
+  resize: vertical;
+}
+.regla-form input:focus,
+.regla-form select:focus,
+.regla-form textarea:focus {
+  border-color: var(--stamp);
+  background: var(--white);
+}
+.regla-form .field-error {
+  grid-column: 2;
+  color: var(--stamp);
+  font-size: 13px;
+  margin: 4px 0;
+}
+.regla-filters {
+  display: flex;
+  align-items: end;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.regla-filters .selection-search {
+  margin-bottom: 0;
+}
+.regla-filters label,
+.regla-condition-data > label {
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+}
+.regla-hint,
+.regla-form small {
+  font-size: 12px;
+}
+.regla-section-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: var(--space-2);
+}
+.regla-associations {
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-2);
+}
+.regla-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.regla-section-heading h3 {
+  margin: 0;
+  font-size: 14px;
+}
+.regla-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2);
+  margin: var(--space-2) 0;
+  border: 1px solid var(--rule);
+  min-width: 0;
+}
+.regla-detail-data {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  flex-wrap: wrap;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+.regla-actions {
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+.regla-form .button {
+  width: auto;
+  min-height: 28px;
+  font-size: 13px;
+  padding: 5px 8px;
+}
+.regla-condition-data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+}
+.regla-condition-data > label {
+  flex: 1 1 140px;
+}
+.regla-condition-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1 1 180px;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.regla-condition-summary {
+  flex-basis: 100%;
+}
+.regla-form .regla-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+.regla-check input {
+  accent-color: var(--stamp);
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+.regla-conflict {
+  padding: 8px;
+  border: 1px solid var(--stamp);
+}
+@media (max-width: 600px) {
+  .regla-general {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .regla-form .field {
+    grid-template-columns: 110px minmax(0, 1fr);
+  }
+  .regla-form input:not([type='checkbox']),
+  .regla-form select,
+  .regla-form textarea {
+    min-height: 36px;
+    font-size: 16px;
+  }
+  .regla-detail {
+    flex-wrap: wrap;
+  }
+  .regla-condition-data {
+    flex-basis: 100%;
+  }
+  .regla-filters > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
