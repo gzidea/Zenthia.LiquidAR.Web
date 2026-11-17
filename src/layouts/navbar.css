@@ -1,1 +1,20 @@
 @import '@zenthia/app-shell/navbar.css';
+
+.empresa-global-pages {
+  padding-top: 6px;
+  border-top: 1px solid var(--rule);
+}
+
+.empresa-global-pages .button {
+  min-height: 30px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.empresa-global-pages .button:disabled {
+  background: transparent;
+  color: var(--ink-soft);
+  opacity: 0.5;
+}

@@ -3,6 +3,8 @@
 !package.json
 !package-lock.json
 !index.html
+!public/
+!public/**
 !vite.config.ts
 !tsconfig.json
 !tsconfig.node.json

@@ -1,1 +1,5 @@
 @import '@zenthia/app-shell/sidebar.css';
+
+.app-shell > .main-content {
+  padding: 24px;
+}
